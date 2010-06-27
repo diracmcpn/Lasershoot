@@ -52,12 +52,12 @@ int main (int argc, char** argv)
                 {
                     case SDLK_RIGHT:
                         posx+=VELOCITY_VEHICLE/FRAME_PER_SECOND;
-                        rotwheel -= 8; //virtual velocity
+                        rotwheel -= 8; //virtual angular velocity
                         break;
 
                     case SDLK_LEFT:
                         posx-=VELOCITY_VEHICLE/FRAME_PER_SECOND;
-                        rotwheel += 8; //virtual velocity
+                        rotwheel += 8; //virtual angular velocity
                         break;
 
                     case SDLK_UP:
