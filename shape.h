@@ -3,6 +3,7 @@
 #include <GL/gl.h>
 #include <GL/glu.h>
 #include <math.h>
+#include "basis.h"
 
 typedef enum Portion Portion;
 enum Portion
@@ -33,7 +34,6 @@ struct Rectangle
     double width;
 };
 
-void drawFrame(int scale); //Draw a frame
 void drawDisk(Disk *disk); //Draw a disk
 void drawCircle(Circle *circle); //Draw a circle
 void drawRectangle(Rectangle *rectangle); //Draw a rectangle
