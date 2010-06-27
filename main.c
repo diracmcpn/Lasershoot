@@ -4,11 +4,11 @@
 #include "shape.h"
 #include "vehicle.h"
 #include "basis.h"
+#include "motor.h"
 
 #define WIDTH_SCREEN 800
 #define HEIGHT_SCREEN 600
 #define VELOCITY_VEHICLE 2.0 //pixels/second
-#define VELOCITY_CANON 4.0 //angle/second
 
 int main (int argc, char** argv)
 {
