@@ -6,9 +6,9 @@
 
 #define WIDTH_SCREEN 800
 #define HEIGHT_SCREEN 600
-#define FRAME_PER_SECOND 40
-#define VELOCITY_VEHICLE 60 //pixels/second
-#define VELOCITY_CANON 40 //angle/second
+#define FRAME_PER_SECOND 40 //
+#define VELOCITY_VEHICLE 2.0 //pixels/second
+#define VELOCITY_CANON 4.0 //angle/second
 
 int main (int argc, char** argv)
 {
@@ -36,11 +36,13 @@ int main (int argc, char** argv)
 
     SDL_Event event;
     int again = 1;
-    SDL_EnableKeyRepeat(10,1000/FRAME_PER_SECOND);
+    int previousTime = 0;
+    int currentTime = 0;
+    int elapsedTime = 0;
 
     while (again)
     {
-        SDL_WaitEvent(&event);
+        SDL_PollEvent(&event);
         switch (event.type)
         {
             case SDL_QUIT:
@@ -52,12 +54,12 @@ int main (int argc, char** argv)
                 {
                     case SDLK_RIGHT:
                         posx+=VELOCITY_VEHICLE/FRAME_PER_SECOND;
-                        rotwheel -= 8; //virtual angular velocity
+                        rotwheel -= VELOCITY_VEHICLE/FRAME_PER_SECOND; //virtual angular velocity
                         break;
 
                     case SDLK_LEFT:
                         posx-=VELOCITY_VEHICLE/FRAME_PER_SECOND;
-                        rotwheel += 8; //virtual angular velocity
+                        rotwheel += VELOCITY_VEHICLE/FRAME_PER_SECOND; //virtual angular velocity
                         break;
 
                     case SDLK_UP:
@@ -84,13 +86,25 @@ int main (int argc, char** argv)
             default:
                 break;
         }
-        glClear(GL_COLOR_BUFFER_BIT);
-        glMatrixMode(GL_MODELVIEW);
-        glLoadIdentity();
-        glTranslated(WIDTH_SCREEN/2,HEIGHT_SCREEN/2,0);
-        drawVehicle(posx,rotcanon,rotwheel);
-        glFlush();
-        SDL_GL_SwapBuffers();
+        currentTime = SDL_GetTicks();
+        elapsedTime = currentTime - previousTime;
+
+        if (elapsedTime > 1000/FRAME_PER_SECOND)
+        {
+            glClear(GL_COLOR_BUFFER_BIT);
+            glMatrixMode(GL_MODELVIEW);
+            glLoadIdentity();
+            glTranslated(WIDTH_SCREEN/2,HEIGHT_SCREEN/2,0);
+            drawVehicle(posx,rotcanon,rotwheel);
+            glFlush();
+            SDL_GL_SwapBuffers();
+
+            previousTime = currentTime;
+        }
+        else
+        {
+            SDL_Delay(1000/FRAME_PER_SECOND - elapsedTime);
+        }
     }
 
     SDL_Quit();
