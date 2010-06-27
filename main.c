@@ -1,12 +1,11 @@
 #include <SDL/SDL.h>
 #include <GL/gl.h>
 #include <GL/glu.h>
-#include "shape.h"
-#include "vehicle.h"
 #include "basis.h"
 #include "motor.h"
-#include <stdio.h>
-#include <stdlib.h>
+#include "shape.h"
+#include "vehicle.h"
+#include "background.h"
 
 #define WIDTH_SCREEN 800
 #define HEIGHT_SCREEN 600
@@ -103,8 +102,8 @@ int main (int argc, char** argv)
     Vehicle vehicle;
 
     Coord posVehicle;
-    posVehicle.x = WIDTH_SCREEN/2;
-    posVehicle.y = HEIGHT_SCREEN/2;
+    posVehicle.x = 0;
+    posVehicle.y = 0;
 
     vehicle.velocity = 4.0;
 
@@ -177,6 +176,7 @@ int main (int argc, char** argv)
             glMatrixMode(GL_MODELVIEW);
             glLoadIdentity();
             drawVehicle(&vehicle);
+            //drawGround();
             glFlush();
             SDL_GL_SwapBuffers();
 

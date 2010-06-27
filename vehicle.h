@@ -1,9 +1,9 @@
 #ifndef VEHICLE_H_INCLUDED
 #define VEHICLE_H_INCLUDED
+#include "basis.h"
 #include "shape.h"
 #include <GL/gl.h>
 #include <GL/glu.h>
-#include "basis.h"
 
 typedef struct Wheel Wheel;
 struct Wheel

@@ -3,7 +3,6 @@
 #include <GL/gl.h>
 #include <GL/glu.h>
 #include <math.h>
-#include "basis.h"
 
 typedef enum Portion Portion;
 enum Portion

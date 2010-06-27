@@ -43,7 +43,6 @@ void drawCanon(Canon *canon)
 
 void drawVehicle(Vehicle *vehicle)
 {
-
     glPushMatrix();
     glTranslated(vehicle->position->x,vehicle->position->y,0);
     drawBody(vehicle->body);
