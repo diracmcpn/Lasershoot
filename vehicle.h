@@ -4,6 +4,7 @@
 #include <GL/gl.h>
 #include <GL/glu.h>
 #include "basis.h"
+#define FRAME_PER_SECOND 40
 
 typedef struct Wheel Wheel;
 struct Wheel
@@ -34,6 +35,7 @@ struct Canon
     Rectangle *rectangle;
     Coord *position;
     double rotationAngle;
+    double rotationVelocity;
 };
 
 typedef struct Vehicle Vehicle;
@@ -52,10 +54,8 @@ void drawWheel(Wheel *wheel);
 void drawHead(Head *head);
 void drawCanon(Canon *canon);
 void drawVehicle(Vehicle *vehicle);
-/*void rotate(Wheel *wheel, double angle);
-void rotate(Canon *canon, double angle);
-void translateVehicle(Vehicle *vehicle, Coord *position);
-
-void drawVehicle(Coord *position, double canonAngle, double wheelAngle);*/
+void rotateCanon(Canon *canon, Sens sens);
+/*void rotateWheel(Wheel *wheel);
+void translateVehicle(Vehicle *vehicle);*/
 
 #endif // VEHICLE_H_INCLUDED

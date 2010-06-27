@@ -7,7 +7,6 @@
 
 #define WIDTH_SCREEN 800
 #define HEIGHT_SCREEN 600
-#define FRAME_PER_SECOND 40 //
 #define VELOCITY_VEHICLE 2.0 //pixels/second
 #define VELOCITY_CANON 4.0 //angle/second
 
@@ -91,6 +90,7 @@ int main (int argc, char** argv)
     canon.rectangle = &rectCanon;
 
     canon.rotationAngle = 0;
+    canon.rotationVelocity = 4.0;
 
     Coord posCanon;
     posCanon.x = 0;
@@ -112,20 +112,14 @@ int main (int argc, char** argv)
 
     drawVehicle(&vehicle);
 
-    //drawFrame(100);
-    /*double posx = 0;
-    double rotcanon = 0;
-    double rotwheel = 0;
-    drawVehicle(posx,rotcanon,rotwheel);
-*/
     glFlush();
     SDL_GL_SwapBuffers();
 
     SDL_Event event;
-    /*int previousTime = 0;
+    int previousTime = 0;
     int currentTime = 0;
     int elapsedTime = 0;
-*/
+
     int again = 1;
     while (again)
     {
@@ -135,11 +129,11 @@ int main (int argc, char** argv)
             case SDL_QUIT:
                 again = 0;
                 break;
-            /*
+
             case SDL_KEYDOWN:
                 switch (event.key.keysym.sym)
                 {
-                    case SDLK_RIGHT:
+                    /*case SDLK_RIGHT:
                         posx+=VELOCITY_VEHICLE/FRAME_PER_SECOND;
                         rotwheel -= VELOCITY_VEHICLE/FRAME_PER_SECOND; //virtual angular velocity
                         break;
@@ -148,32 +142,24 @@ int main (int argc, char** argv)
                         posx-=VELOCITY_VEHICLE/FRAME_PER_SECOND;
                         rotwheel += VELOCITY_VEHICLE/FRAME_PER_SECOND; //virtual angular velocity
                         break;
-
+                    */
                     case SDLK_UP:
-                        rotcanon += VELOCITY_CANON/FRAME_PER_SECOND;
-                        if (rotcanon>85)
-                        {
-                            rotcanon = 85;
-                        }
+                        rotateCanon(&canon, DIRECT);
                         break;
 
                     case SDLK_DOWN:
-                        rotcanon -= VELOCITY_CANON/FRAME_PER_SECOND;
-                        if (rotcanon<0)
-                        {
-                            rotcanon = 0;
-                        }
+                        rotateCanon(&canon, INDIRECT);
                         break;
 
                     default:
                         break;
                 }
                 break;
-*/
+
             default:
                 break;
         }
-        /*
+
         currentTime = SDL_GetTicks();
         elapsedTime = currentTime - previousTime;
 
@@ -182,8 +168,7 @@ int main (int argc, char** argv)
             glClear(GL_COLOR_BUFFER_BIT);
             glMatrixMode(GL_MODELVIEW);
             glLoadIdentity();
-            //glTranslated(WIDTH_SCREEN/2,HEIGHT_SCREEN/2,0);
-            drawVehicle(posx,rotcanon,rotwheel);
+            drawVehicle(&vehicle);
             glFlush();
             SDL_GL_SwapBuffers();
 
@@ -192,7 +177,7 @@ int main (int argc, char** argv)
         else
         {
             SDL_Delay(1000/FRAME_PER_SECOND - elapsedTime);
-        }*/
+        }
     }
 
     SDL_Quit();
