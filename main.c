@@ -7,22 +7,21 @@
 #include "vehicle.h"
 #include "background.h"
 
-#define WIDTH_SCREEN 800
-#define HEIGHT_SCREEN 600
-
 int main (int argc, char** argv)
 {
     SDL_Init(SDL_INIT_VIDEO);
+
+    //----Scene----//
+    Scene scene;
+    scene.width = 800;
+    scene.height = 600;
+
     SDL_WM_SetCaption("GetTheCube", NULL);
-    SDL_SetVideoMode(WIDTH_SCREEN, HEIGHT_SCREEN, 32, SDL_OPENGL);
+    SDL_SetVideoMode(scene.width, scene.height, 32, SDL_OPENGL);
 
     glMatrixMode(GL_PROJECTION);
     glLoadIdentity();
-    gluOrtho2D(0,WIDTH_SCREEN,0,HEIGHT_SCREEN); //(0,0) bottom left
-
-    glClear(GL_COLOR_BUFFER_BIT);
-    glMatrixMode(GL_MODELVIEW);
-    glLoadIdentity();
+    gluOrtho2D(0,scene.width,0,scene.height); //(0,0) bottom left
 
 //----Body----//
     Body body;
@@ -102,8 +101,8 @@ int main (int argc, char** argv)
     Vehicle vehicle;
 
     Coord posVehicle;
-    posVehicle.x = 0;
-    posVehicle.y = 0;
+    posVehicle.x = scene.width/2;
+    posVehicle.y = scene.height/2;
 
     vehicle.velocity = 4.0;
 
@@ -115,11 +114,11 @@ int main (int argc, char** argv)
     vehicle.head = &head;
     vehicle.position = &posVehicle;
 
-//------The Scene and Event------//
-    drawVehicle(&vehicle);
-    glFlush();
-    SDL_GL_SwapBuffers();
+//----Ground----//
+    Ground ground;
+    ground.height = 50;
 
+//------The World and Event------//
     SDL_Event event;
     int previousTime = 0;
     int currentTime = 0;
@@ -176,7 +175,7 @@ int main (int argc, char** argv)
             glMatrixMode(GL_MODELVIEW);
             glLoadIdentity();
             drawVehicle(&vehicle);
-            //drawGround();
+            drawGround(&scene, &ground);
             glFlush();
             SDL_GL_SwapBuffers();
 

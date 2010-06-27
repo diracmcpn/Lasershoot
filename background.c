@@ -1,11 +1,12 @@
 #include "background.h"
 
-void drawGround()
+void drawGround(Scene *scene, Ground *ground)
 {
     glPushMatrix();
-    glBegin(GL_LINE);
-    glVertex2d(0,100);
-    glVertex2d(800,1);
+    glColor3ub(255,255,255);
+    glBegin(GL_LINES);
+    glVertex2i(0,ground->height);
+    glVertex2i(scene->width,ground->height);
     glEnd();
     glPopMatrix();
 }
