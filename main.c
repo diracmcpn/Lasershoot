@@ -5,6 +5,8 @@
 #include "vehicle.h"
 #include "basis.h"
 #include "motor.h"
+#include <stdio.h>
+#include <stdlib.h>
 
 #define WIDTH_SCREEN 800
 #define HEIGHT_SCREEN 600
@@ -114,8 +116,8 @@ int main (int argc, char** argv)
     vehicle.head = &head;
     vehicle.position = &posVehicle;
 
+//------The Scene and Event------//
     drawVehicle(&vehicle);
-
     glFlush();
     SDL_GL_SwapBuffers();
 
