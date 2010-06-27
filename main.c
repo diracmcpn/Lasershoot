@@ -97,11 +97,15 @@ int main (int argc, char** argv)
     posCanon.y = rectBody.width/2+diskHead.radius/2;
     canon.position = &posCanon;
 
-    //Vehicle
+//----Vehicle----//
     Vehicle vehicle;
+
     Coord posVehicle;
     posVehicle.x = WIDTH_SCREEN/2;
     posVehicle.y = HEIGHT_SCREEN/2;
+
+    vehicle.velocity = 4.0;
+
     vehicle.position = &posVehicle;
     vehicle.body = &body;
     vehicle.frontWheel = &frontWheel;
@@ -134,13 +138,13 @@ int main (int argc, char** argv)
                 switch (event.key.keysym.sym)
                 {
                     case SDLK_RIGHT:
-                        //posx+=VELOCITY_VEHICLE/FRAME_PER_SECOND;
+                        translateVehicle(&vehicle, RIGHT);
                         rotateWheel(&frontWheel, INDIRECT);
                         rotateWheel(&rearWheel, INDIRECT);
                         break;
 
                     case SDLK_LEFT:
-                        //posx-=VELOCITY_VEHICLE/FRAME_PER_SECOND;
+                        translateVehicle(&vehicle, LEFT);
                         rotateWheel(&frontWheel, DIRECT);
                         rotateWheel(&rearWheel, DIRECT);
                         break;

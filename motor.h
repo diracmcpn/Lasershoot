@@ -6,6 +6,6 @@
 
 void rotateCanon(Canon *canon, Sens sens);
 void rotateWheel(Wheel *wheel, Sens sens);
-/*
-void translateVehicle(Vehicle *vehicle);*/
+void translateVehicle(Vehicle *vehicle, Direction direction);
+
 #endif // MOTOR_H_INCLUDED

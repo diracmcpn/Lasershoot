@@ -47,6 +47,7 @@ struct Vehicle
     Head *head;
     Canon *canon;
     Coord *position;
+    double velocity;
 };
 
 void drawBody(Body *body);

@@ -31,3 +31,15 @@ void rotateWheel(Wheel *wheel, Sens sens)
         wheel->rotationAngle -= wheel->rotationVelocity/FRAME_PER_SECOND;
     }
 }
+
+void translateVehicle(Vehicle *vehicle, Direction direction)
+{
+    if (direction==RIGHT)
+    {
+        vehicle->position->x += vehicle->velocity/FRAME_PER_SECOND;
+    }
+    else if (direction==LEFT)
+    {
+        vehicle->position->x -= vehicle->velocity/FRAME_PER_SECOND;
+    }
+}
