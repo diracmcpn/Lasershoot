@@ -97,12 +97,16 @@ int main (int argc, char** argv)
     posCanon.y = rectBody.width/2+diskHead.radius/2;
     canon.position = &posCanon;
 
+//----Ground----//
+    Ground ground;
+    ground.height = 50;
+
 //----Vehicle----//
     Vehicle vehicle;
 
     Coord posVehicle;
-    posVehicle.x = scene.width/2;
-    posVehicle.y = scene.height/2;
+    posVehicle.x = rectBody.length/2+10;
+    posVehicle.y = ground.height+rectBody.width/2+2*diskWheel.radius;
 
     vehicle.velocity = 4.0;
 
@@ -113,10 +117,6 @@ int main (int argc, char** argv)
     vehicle.canon = &canon;
     vehicle.head = &head;
     vehicle.position = &posVehicle;
-
-//----Ground----//
-    Ground ground;
-    ground.height = 50;
 
 //------The World and Event------//
     SDL_Event event;
