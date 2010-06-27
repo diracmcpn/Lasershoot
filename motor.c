@@ -19,3 +19,15 @@ void rotateCanon(Canon *canon, Sens sens)
         }
     }
 }
+
+void rotateWheel(Wheel *wheel, Sens sens)
+{
+    if (sens==DIRECT)
+    {
+        wheel->rotationAngle += wheel->rotationVelocity/FRAME_PER_SECOND;
+    }
+    else if (sens==INDIRECT)
+    {
+        wheel->rotationAngle -= wheel->rotationVelocity/FRAME_PER_SECOND;
+    }
+}

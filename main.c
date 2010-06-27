@@ -8,7 +8,6 @@
 
 #define WIDTH_SCREEN 800
 #define HEIGHT_SCREEN 600
-#define VELOCITY_VEHICLE 2.0 //pixels/second
 
 int main (int argc, char** argv)
 {
@@ -53,6 +52,7 @@ int main (int argc, char** argv)
     frontWheel.wheelLine = &wheelLine;
 
     frontWheel.rotationAngle = 0;
+    frontWheel.rotationVelocity = 10.0;
 
     Coord posFrontWheel;
     posFrontWheel.x = rectBody.length/2-diskWheel.radius;
@@ -133,16 +133,18 @@ int main (int argc, char** argv)
             case SDL_KEYDOWN:
                 switch (event.key.keysym.sym)
                 {
-                    /*case SDLK_RIGHT:
-                        posx+=VELOCITY_VEHICLE/FRAME_PER_SECOND;
-                        rotwheel -= VELOCITY_VEHICLE/FRAME_PER_SECOND; //virtual angular velocity
+                    case SDLK_RIGHT:
+                        //posx+=VELOCITY_VEHICLE/FRAME_PER_SECOND;
+                        rotateWheel(&frontWheel, INDIRECT);
+                        rotateWheel(&rearWheel, INDIRECT);
                         break;
 
                     case SDLK_LEFT:
-                        posx-=VELOCITY_VEHICLE/FRAME_PER_SECOND;
-                        rotwheel += VELOCITY_VEHICLE/FRAME_PER_SECOND; //virtual angular velocity
+                        //posx-=VELOCITY_VEHICLE/FRAME_PER_SECOND;
+                        rotateWheel(&frontWheel, DIRECT);
+                        rotateWheel(&rearWheel, DIRECT);
                         break;
-                    */
+
                     case SDLK_UP:
                         rotateCanon(&canon, DIRECT);
                         break;

@@ -12,6 +12,7 @@ struct Wheel
     Circle *wheelLine;
     Coord *position;
     double rotationAngle; //degree
+    double rotationVelocity; //angle/second
 };
 
 typedef struct Body Body;
