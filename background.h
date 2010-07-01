@@ -25,6 +25,14 @@ struct Medium
     Coord *position;
 };
 
+typedef struct Stand Stand;
+struct Stand
+{
+    double width;
+    double height;
+    Coord *position;
+};
+
 void drawGround(Scene *scene, Ground *ground); //Draw the ground
 void drawMedium(Medium *medium); //Draw the medium
 

@@ -7,6 +7,7 @@
 #include "vehicle.h"
 #include "background.h"
 #include <stdlib.h>
+#include <time.h>
 
 int main (int argc, char** argv)
 {
@@ -110,6 +111,7 @@ int main (int argc, char** argv)
     medium.height = 400;
 
     Coord posMedium;
+    srand(time(NULL));
     posMedium.x = scene.width/2 + rand() * (3*scene.width/8.0 / RAND_MAX);
     posMedium.y = ground.height + medium.height/2;
 
@@ -119,8 +121,8 @@ int main (int argc, char** argv)
     Vehicle vehicle;
 
     Coord posVehicle;
-    posVehicle.x = rectBody.length/2+10;
-    posVehicle.y = ground.height+rectBody.width/2+2*diskWheel.radius;
+    posVehicle.x = rectBody.length/2 + 10;
+    posVehicle.y = ground.height + rectBody.width/2 + 2*diskWheel.radius;
 
     vehicle.velocity = 4.0;
     vehicle.minPos = 0 + body.rectangle->length/2;

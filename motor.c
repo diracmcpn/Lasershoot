@@ -7,7 +7,7 @@ void rotateCanon(Canon *canon, Sens sens)
         canon->rotationAngle += canon->rotationVelocity/FRAME_PER_SECOND;
         if (canon->rotationAngle>canon->maxAngle)
         {
-            canon->rotationAngle = 85;
+            canon->rotationAngle = canon->maxAngle;
         }
     }
     else if (sens==INDIRECT)
@@ -15,7 +15,7 @@ void rotateCanon(Canon *canon, Sens sens)
         canon->rotationAngle -= canon->rotationVelocity/FRAME_PER_SECOND;
         if (canon->rotationAngle<canon->minAngle)
         {
-            canon->rotationAngle = 0;
+            canon->rotationAngle = canon->minAngle;
         }
     }
 }
