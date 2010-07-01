@@ -6,6 +6,7 @@
 #include "shape.h"
 #include "vehicle.h"
 #include "background.h"
+#include <stdlib.h>
 
 int main (int argc, char** argv)
 {
@@ -118,6 +119,17 @@ int main (int argc, char** argv)
     vehicle.head = &head;
     vehicle.position = &posVehicle;
 
+//----Medium----//
+    Medium medium;
+    medium.width = 100;
+    medium.height = 400;
+
+    Coord posMedium;
+    posMedium.x = scene.width/2 + rand() * (3.0*scene.width/8.0 / RAND_MAX);
+    posMedium.y = ground.height + medium.height/2;
+
+    medium.position = &posMedium;
+
 //------The World and Event------//
     SDL_Event event;
     int previousTime = 0;
@@ -176,6 +188,7 @@ int main (int argc, char** argv)
             glLoadIdentity();
             drawVehicle(&vehicle);
             drawGround(&scene, &ground);
+            drawMedium(&medium);
             glFlush();
             SDL_GL_SwapBuffers();
 
