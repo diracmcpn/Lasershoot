@@ -92,6 +92,8 @@ int main (int argc, char** argv)
 
     canon.rotationAngle = 0;
     canon.rotationVelocity = 4.0;
+    canon.minAngle = 0;
+    canon.maxAngle = 85;
 
     Coord posCanon;
     posCanon.x = 0;
@@ -101,6 +103,17 @@ int main (int argc, char** argv)
 //----Ground----//
     Ground ground;
     ground.height = 50;
+
+//----Medium----//
+    Medium medium;
+    medium.width = 100;
+    medium.height = 400;
+
+    Coord posMedium;
+    posMedium.x = scene.width/2 + rand() * (3*scene.width/8.0 / RAND_MAX);
+    posMedium.y = ground.height + medium.height/2;
+
+    medium.position = &posMedium;
 
 //----Vehicle----//
     Vehicle vehicle;
@@ -118,17 +131,6 @@ int main (int argc, char** argv)
     vehicle.canon = &canon;
     vehicle.head = &head;
     vehicle.position = &posVehicle;
-
-//----Medium----//
-    Medium medium;
-    medium.width = 100;
-    medium.height = 400;
-
-    Coord posMedium;
-    posMedium.x = scene.width/2 + rand() * (3.0*scene.width/8.0 / RAND_MAX);
-    posMedium.y = ground.height + medium.height/2;
-
-    medium.position = &posMedium;
 
 //------The World and Event------//
     SDL_Event event;

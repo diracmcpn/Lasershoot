@@ -36,6 +36,8 @@ struct Canon
     Coord *position;
     double rotationAngle; //degree
     double rotationVelocity; //angle/second
+    double minAngle;
+    double maxAngle;
 };
 
 typedef struct Vehicle Vehicle;
@@ -48,6 +50,8 @@ struct Vehicle
     Canon *canon;
     Coord *position;
     double velocity;
+    double minPos;
+    double maxPos;
 };
 
 void drawBody(Body *body);
