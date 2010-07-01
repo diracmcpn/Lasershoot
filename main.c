@@ -123,6 +123,8 @@ int main (int argc, char** argv)
     posVehicle.y = ground.height+rectBody.width/2+2*diskWheel.radius;
 
     vehicle.velocity = 4.0;
+    vehicle.minPos = 0 + body.rectangle->length/2;
+    vehicle.maxPos = medium.position->x - medium.width/2 - body.rectangle->length/2;
 
     vehicle.position = &posVehicle;
     vehicle.body = &body;

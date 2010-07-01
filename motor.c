@@ -38,18 +38,18 @@ void translateVehicle(Vehicle *vehicle, Direction direction)
     {
         vehicle->position->x += vehicle->velocity/FRAME_PER_SECOND;
 
-        if (vehicle->position->x+vehicle->body->rectangle->length/2>800)
+        if (vehicle->position->x>vehicle->maxPos)
         {
-            vehicle->position->x = 800-vehicle->body->rectangle->length/2;
+            vehicle->position->x = vehicle->maxPos;
         }
     }
     else if (direction==LEFT)
     {
         vehicle->position->x -= vehicle->velocity/FRAME_PER_SECOND;
 
-        if (vehicle->position->x-vehicle->body->rectangle->length/2<0)
+        if (vehicle->position->x<vehicle->minPos)
         {
-            vehicle->position->x = 0+vehicle->body->rectangle->length/2;
+            vehicle->position->x = vehicle->minPos;
         }
     }
 }
