@@ -45,7 +45,6 @@ void drawVehicle(Vehicle *vehicle)
 {
     glPushMatrix();
     glTranslated(vehicle->position.x,vehicle->position.y,0);
-    printf("%f\n",vehicle->position.x);
     drawBody(&(vehicle->body));
     drawWheel(&(vehicle->frontWheel));
     drawWheel(&(vehicle->rearWheel));

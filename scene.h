@@ -3,7 +3,6 @@
 #include <GL/gl.h>
 #include <GL/glu.h>
 #include "shape.h"
-#include <stdio.h>
 
 typedef struct Scene Scene;
 struct Scene
