@@ -37,6 +37,22 @@ int main (int argc, char** argv)
     medium.position.x = scene.width/2 + rand() * (3*scene.width/8.0/RAND_MAX);
     medium.position.y = ground.position.y + medium.rectangle.width/2;
 
+//----Support----//
+    Stand stand;
+    stand.rectangle.length = 10;
+    srand(time(NULL));
+    stand.rectangle.width = ground.position.y + rand() * ((scene.height-ground.position.y)*9/10/RAND_MAX);
+    stand.position.x = scene.width - stand.rectangle.length;
+    stand.position.y = ground.position.y + stand.rectangle.width/2;
+
+//----target----//
+    Target target;
+    target.circle.radius = 10;
+    target.circle.nbVertex = 50;
+    target.circle.piAngle = 2;
+    target.position.x = stand.position.x;
+    target.position.y = ground.position.y + stand.rectangle.width + target.circle.radius;
+
 //----Vehicle----//
     Vehicle vehicle;
 
@@ -151,6 +167,8 @@ int main (int argc, char** argv)
             drawVehicle(&vehicle);
             drawGround(&ground);
             drawMedium(&medium);
+            drawStand(&stand);
+            drawTarget(&target);
             glFlush();
             SDL_GL_SwapBuffers();
 

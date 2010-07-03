@@ -75,7 +75,7 @@ void drawStand(Stand *stand)
 {
     glPushMatrix();
     glTranslated(stand->position.x,stand->position.y,0);
-    glColor3ub(0,245,255);
+    glColor3ub(255,20,147);
     drawBlankRectangle(&(stand->rectangle));
     glPopMatrix();
 }
@@ -84,7 +84,7 @@ void drawTarget(Target *target)
 {
     glPushMatrix();
     glTranslated(target->position.x,target->position.y,0);
-    glColor3ub(255,255,0);
+    glColor3ub(255,165,0);
     drawSolidCircle(&(target->circle));
     glPopMatrix();
 }
