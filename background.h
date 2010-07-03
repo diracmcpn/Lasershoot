@@ -4,26 +4,6 @@
 #include <GL/glu.h>
 #include "basis.h"
 
-typedef struct Ground Ground;
-struct Ground
-{
-    double height;
-};
-
-typedef struct Scene Scene;
-struct Scene
-{
-    int height;
-    int width;
-};
-
-typedef struct Medium Medium;
-struct Medium
-{
-    double width;
-    double height;
-    Coord *position;
-};
 
 typedef struct Stand Stand;
 struct Stand

@@ -4,26 +4,20 @@
 #include <GL/glu.h>
 #include <math.h>
 
-typedef enum Portion Portion;
-enum Portion
+typedef struct Coord Coord;
+struct Coord
 {
-    FULL = 2, HALF = 1
-};
-
-typedef struct Disk Disk;
-struct Disk
-{
-    double nbVertex; //Number of vertex
-    double radius; // Radius of the disk
-    Portion portion; //Portion of the disk
+    double x;
+    double y;
 };
 
 typedef struct Circle Circle;
 struct Circle
 {
-    double nbVertex; //Number of vertex
+    int nbVertex; //Number of vertex
     double radius; // Radius of the circle
-    Portion portion; //Portion of the circle
+    float piAngle; //Angle of the circle in Pi
+    //center of the circle =(0,0)
 };
 
 typedef struct Rectangle Rectangle;
@@ -31,11 +25,21 @@ struct Rectangle
 {
     double length;
     double width;
+    //center of the rectangle = (0,0)
 };
 
-void drawDisk(Disk *disk); //Draw a disk
-void drawCircle(Circle *circle); //Draw a circle
-void drawRectangle(Rectangle *rectangle); //Draw a rectangle
+typedef struct Line Line;
+struct Line
+{
+    double length;
+    //center of the line = (0,0)
+};
 
+void drawFrame(int scale); //Draw a frame
+void drawSolidCircle(Circle *circle); //Draw a solid circle
+void drawBlankCircle(Circle *circle); //Draw a blank circle
+void drawSolidRectangle(Rectangle *rectangle); //Draw a solid rectangle
+void drawBlankRectangle(Rectangle *rectangle); //Draw a blank rectangle
+void drawLine(Line *line); //Draw a line
 
 #endif // SHAPE_H_INCLUDED
